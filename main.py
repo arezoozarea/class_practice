@@ -58,24 +58,45 @@
 # an = bag()
 # an.add_twice(2)
 # ------------------------------
-class partlyanimal():
-    x = 0
-    name = ""
-    def __init__(self,nam):
-        self.name = nam
-    def party(self):
-        self.x = self.x + 1
-        print (self.name,self.x)
-class footballfan(partlyanimal):
-    points = 0
-    def touchdown(self):
-        self.points = self.points + 7
-        self.party()
-        print(self.name,self.points)
-s = partlyanimal("sally")
-s.party()
-j = footballfan("jim")
-j.party()
-j.touchdown()
+# class partlyanimal():
+#     x = 0
+#     name = ""
+#     def __init__(self,nam):
+#         self.name = nam
+#     def party(self):
+#         self.x = self.x + 1
+#         print (self.name,self.x)
+# class footballfan(partlyanimal):
+#     points = 0
+#     def touchdown(self):
+#         self.points = self.points + 7
+#         self.party()
+#         print(self.name,self.points)
+# s = partlyanimal("sally")
+# s.party()
+# j = footballfan("jim")
+# j.party()
+# j.touchdown()
+#------------------------------
+class Polygon():
+    def __init__(self,no_of_side):
+        self.n = no_of_side
+        self.sides = [0 for i in range(no_of_side)]
+    def input_side(self):
+        self.sides = [float(input("enter_side" + str(i+1) + ": ")) for i in range(self.n)]
+    def dispSides(self):
+        for i in range(self.n):
+            print("side",i+1,"is",self.sides[i])
+class Triangle(Polygon):
+    def __init__(self):
+        Polygon.__init__(self,3)
+    def findArea(self):
+        a,b,c = self.sides
+        s = (a + b + c) / 2
+        area = (s * (s - a) * (s - b) * (s - c)) ** 0.5
+        print('The area of the triangle is %0.2f' % area)
 
-
+an = Triangle()
+an.input_side()
+an.dispSides()
+an.findArea()
